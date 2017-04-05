@@ -44,14 +44,14 @@ simulator {
 
 tiles {
 // Removed because I am not using these - you may wish to keep included
-	/* standardTile("contact1", "device.contact1", width: 1, height: 1) {
+	standardTile("contact1", "device.contact1", width: 1, height: 1) {
 		state "open", label: '${name}', icon: "st.contact.contact.open", backgroundColor: "#ffa81e"
 		state "closed", label: '${name}', icon: "st.contact.contact.closed", backgroundColor: "#79b821"
 }
 	standardTile("contact2", "device.contact2", width: 1, height: 1) {
 		state "open", label: '${name}', icon: "st.contact.contact.open", backgroundColor: "#ffa81e"
 		state "closed", label: '${name}', icon: "st.contact.contact.closed", backgroundColor: "#79b821"
-}*/
+}
 
         valueTile("temperature1", "device.temperature1", width: 1, height: 1) {
     state("temperature", label:'${currentValue}°',
