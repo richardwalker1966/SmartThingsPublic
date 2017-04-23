@@ -790,21 +790,8 @@ private escapeStringForInfluxDB(str) {
 private getGroupName(id) {
 
     if (id == null) {return 'Home'}
-    else if (id == '20c82226-7659-4585-98de-60bcf9e92cf6') {return 'Living'}
-    else if (id == '2ae3017f-91d0-4abc-a02d-a5b01513f1f6') {return 'Study'}
-    else if (id == '2dbd8526-51cd-45dd-9ea7-7bf363af26f3') {return 'Childrens'}
-    else if (id == '4cc9a5ed-12a8-4df4-89cd-4f6f1b22fd4c') {return 'Landing'}
-    else if (id == '5bf76655-d2db-4094-b0bf-5d3d0c794dea') {return 'Bathroom'}
-    else if (id == '68a0f3b1-2589-41b6-b997-485e0aefad50') {return 'Bedroom'}
-    else if (id == '7efd7c80-f7c4-458c-9107-0d6242646dc4') {return 'Garden'}
-    else if (id == '95ae1dfb-a238-4975-a499-419848929ccf') {return 'Understairs'}
-    else if (id == 'a0b712f5-ff9a-487c-be2d-bd745fbfbb80') {return 'Porch'}
-    else if (id == 'ae1459b5-d2ed-46de-b285-96bb14489cbb') {return 'Shed'}
-    else if (id == 'b2655416-9522-44f8-831d-53981e5e06c4') {return 'Kitchen'}
-    else if (id == 'b2ae287a-3b6e-432d-aadf-9835248f03cc') {return 'Toilet'}
-    else if (id == 'ba6a0a7c-08f9-4f86-a101-39b65ac9e551') {return 'Dining'}
-    else if (id == 'dffa2ac7-53bc-43ca-a6b2-1e3c04188597') {return 'Hallway'}
-    else if (id == 'fcf352b2-7e73-40de-a066-3ff2793f5736') {return 'Garage'}
-    
+    else if (id == 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX') {return 'Kitchen'}
+    else if (id == 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX') {return 'Lounge'}
+    else if (id == 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX') {return 'Office'}
     else {return 'Unknown'}    
 }

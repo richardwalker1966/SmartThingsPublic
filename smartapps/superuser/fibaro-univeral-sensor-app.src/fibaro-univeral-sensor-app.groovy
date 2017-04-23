@@ -33,8 +33,10 @@ preferences {
     input "fus", "capability.temperatureMeasurement", title: "Which FUS Module?", multiple: false, required: true
     input "temperature1", "capability.temperatureMeasurement", title: "First temp probe?", multiple: false, required: true
     input "temperature2", "capability.temperatureMeasurement", title: "Second temp probe?", multiple: false, required: true
-     input "temperature3", "capability.temperatureMeasurement", title: "Third temp probe?", multiple: false, required: true
+    input "temperature3", "capability.temperatureMeasurement", title: "Third temp probe?", multiple: false, required: true
     input "temperature4", "capability.temperatureMeasurement", title: "Fourth temp probe?", multiple: false, required: true
+    input "contact1", "capability.contactSensor", title: "First Contact Sensor?", multiple: false, required: true
+    input "contact2", "capability.contactSensor", title: "Sensond Contact Sensor", multiple: false, required: true
   }
 }
 
@@ -48,31 +50,6 @@ def updated() {
  unsubscribe()
  initialize()
 }
-
-/*def rsmHandler(evt) {
-
-    def t1 = 0
-    def t2 = 0
-    def t3 = 0
-    def t4 = 0
-    
-	log.debug "FUS RsMHandler"
-    
-    t1 = fus.currentValue("temperature1")
-    t2 = fus.currentValue("temperature2")
-    t3 = fus.currentValue("temperature3")
-    t4 = fus.currentValue("temperature4")
-    
-    log.debug t1
-    log.debug t2
-    log.debug t3
-    log.debug t4
-        settings.temperature1.setTemperature(t1)
-       settings.temperature2.setTemperature(t2)
-       settings.temperature3.setTemperature(t3)
-       settings.temperature4.setTemperature(t4)
-
-   }*/
 
 def rsmHandler1(evt) {
 
@@ -112,15 +89,40 @@ def rsmHandler4(evt) {
     log.debug t4
     settings.temperature4.setTemperature(t4)
     
+}
+    
+def rsmHandler5(evt) {
+
+    log.debug "FUS RsMHandler5"
+    if (evt.value == "open"){
+      contact1.open()
     }
+    if (evt.value == "closed"){
+      contact1.close()
+    }  
+
+}
+    
+    
+def rsmHandler6(evt) {
+
+    log.debug "FUS RsMHandler6"
+    if (evt.value == "open"){
+      contact2.open()
+    }
+    if (evt.value == "closed"){
+      contact2.close()
+    }  
+    
+}
+    
+ 
 
 def initialize() {
  subscribe(fus, "temperature1", rsmHandler1)
  subscribe(fus, "temperature2", rsmHandler2)
-  subscribe(fus, "temperature3", rsmHandler3)
+ subscribe(fus, "temperature3", rsmHandler3)
  subscribe(fus, "temperature4", rsmHandler4)
- /*These are for testing if events not triggering
- runEvery5Minutes(testhandler("temperature1"))
- schedule("23 20/2 * * * ?", testhandler ("temperature4"))
- unschedule() */
-}
+ subscribe(fus, "contact1",    rsmHandler5)
+ subscribe(fus, "contact2",    rsmHandler6)
+ }
