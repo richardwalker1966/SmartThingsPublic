@@ -43,17 +43,16 @@ simulator {
 }
 
 tiles {
-// Removed because I am not using these - you may wish to keep included
 	standardTile("contact1", "device.contact1", width: 1, height: 1) {
 		state "open", label: '${name}', icon: "st.contact.contact.open", backgroundColor: "#ffa81e"
 		state "closed", label: '${name}', icon: "st.contact.contact.closed", backgroundColor: "#79b821"
-}
+    }
 	standardTile("contact2", "device.contact2", width: 1, height: 1) {
 		state "open", label: '${name}', icon: "st.contact.contact.open", backgroundColor: "#ffa81e"
 		state "closed", label: '${name}', icon: "st.contact.contact.closed", backgroundColor: "#79b821"
-}
+    }
 
-        valueTile("temperature1", "device.temperature1", width: 1, height: 1) {
+    valueTile("temperature1", "device.temperature1", width: 1, height: 1) {
     state("temperature", label:'${currentValue}°',
         backgroundColors:[
             [value: 31, color: "#153591"],
@@ -67,7 +66,7 @@ tiles {
     )
 }
 
-        valueTile("temperature2", "device.temperature2", width: 1, height: 1) {
+    valueTile("temperature2", "device.temperature2", width: 1, height: 1) {
     state("temperature", label:'${currentValue}°',
         backgroundColors:[
             [value: 31, color: "#153591"],
@@ -81,7 +80,7 @@ tiles {
     )
 }
 
-        valueTile("temperature3", "device.temperature3", width: 1, height: 1) {
+    valueTile("temperature3", "device.temperature3", width: 1, height: 1) {
     state("temperature", label:'${currentValue}°',
         backgroundColors:[
             [value: 31, color: "#153591"],
@@ -95,7 +94,7 @@ tiles {
     )
 }
 
-        valueTile("temperature4", "device.temperature4", width: 1, height: 1) {
+    valueTile("temperature4", "device.temperature4", width: 1, height: 1) {
     state("temperature", label:'${currentValue}°',
         backgroundColors:[
             [value: 31, color: "#153591"],
@@ -166,7 +165,7 @@ def zwaveEvent(physicalgraph.zwave.commands.multichannelv3.MultiChannelCmdEncap 
     if (cmd.commandClass == 49) {
 			if (cmd.sourceEndPoint == 3) {
             
-               def brvalues = cmd.parameter
+             def brvalues = cmd.parameter
              def TempCalc = ((brvalues[4] * 256) + brvalues[5]) / 100
                
                log.debug TempCalc
@@ -197,7 +196,7 @@ def zwaveEvent(physicalgraph.zwave.commands.multichannelv3.MultiChannelCmdEncap 
            
            	if (cmd.sourceEndPoint == 5) {
             
-             def brvalues = cmd.parameter
+               def brvalues = cmd.parameter
                def TempCalc = ((brvalues[4] * 256) + brvalues[5]) / 100
                def map = [:]
                map.value = TempCalc
@@ -209,7 +208,7 @@ def zwaveEvent(physicalgraph.zwave.commands.multichannelv3.MultiChannelCmdEncap 
 				
 			}
             
-            	if (cmd.sourceEndPoint == 6) {
+           	if (cmd.sourceEndPoint == 6) {
                 
                def brvalues = cmd.parameter
                def TempCalc = ((brvalues[4] * 256) + brvalues[5]) / 100
@@ -218,7 +217,8 @@ def zwaveEvent(physicalgraph.zwave.commands.multichannelv3.MultiChannelCmdEncap 
                log.debug TempCalc
                map.name = "temperature4"
                map.displayed = true
-               result = createEvent(name: "temperature4", value: TempCalc, descriptionText: "Temperature", temperature: TempCalc, precision: 2, scale: 0, scaledSensorValue: TempCalc, sensorType: 1, sensorValue: brvalues, size: 4)
+               result = createEvent(map)
+               /*result = createEvent(name: "temperature4", value: TempCalc, descriptionText: "Temperature", temperature: TempCalc, precision: 2, scale: 0, scaledSensorValue: TempCalc, sensorType: 1, sensorValue: brvalues, size: 4)*/
 			   log.debug "Temp1 (4)"
 				
 			}
@@ -226,23 +226,23 @@ def zwaveEvent(physicalgraph.zwave.commands.multichannelv3.MultiChannelCmdEncap 
 	if (cmd.commandClass == 32) {
 		if (cmd.parameter == [0]) {
 			if (cmd.sourceEndPoint == 1) {
-				result = createEvent(name: "contact1", value: "closed", descriptionText: "$device.displayName is closed")
+				result = createEvent(name: "contact1", value: "closed", descriptionText: "Contact1 is closed")
 				log.debug "Contact1 is closed"
 			}
 			else
 			if (cmd.sourceEndPoint == 2) {
-				result = createEvent(name: "contact2", value: "closed", descriptionText: "$device.displayName is closed")
+				result = createEvent(name: "contact2", value: "closed", descriptionText: "Contac 2 is closed")
 				log.debug "Contact2 is closed"
 			}
 		}
 		if (cmd.parameter == [255]) {
 			if (cmd.sourceEndPoint == 1) {
-				result = createEvent(name: "contact1", value: "open", descriptionText: "$device.displayName is open")
+				result = createEvent(name: "contact1", value: "open", descriptionText: "Contact 1 is open")
 				log.debug "Contact1 is open"
 			}
 			else
 			if (cmd.sourceEndPoint == 2) {
-				result = createEvent(name: "contact2", value: "open", descriptionText: "$device.displayName is open")
+				result = createEvent(name: "contact2", value: "open", descriptionText: "Contact 2 is open")
 				log.debug "Contact2 is open"
 			}
 		}

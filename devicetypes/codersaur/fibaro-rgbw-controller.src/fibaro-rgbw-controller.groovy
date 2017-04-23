@@ -330,13 +330,13 @@ metadata {
         main(["switch"])
         details([
             // The main multitile:
-            "switch",
+            //"switch",
 
             // RGBW Channels:
-            "switchRed","levelRedSlider", "levelRedTile",
-            "switchGreen","levelGreenSlider", "levelGreenTile",
-            "switchBlue","levelBlueSlider", "levelBlueTile",
-            "switchWhite","levelWhiteSlider", "levelWhiteTile",
+            //"switchRed","levelRedSlider", "levelRedTile",
+            //"switchGreen","levelGreenSlider", "levelGreenTile",
+            //"switchBlue","levelBlueSlider", "levelBlueTile",
+            //"switchWhite","levelWhiteSlider", "levelWhiteTile",
 
             // OUT Channels:
             //"switchCh1","levelCh1Slider", "levelCh1Tile",
@@ -345,21 +345,21 @@ metadata {
             //"switchCh4","levelCh4Slider", "levelCh4Tile",
 
             // INPUT Channels (read-only, label replaced slider control):
-            //"switchCh1ReadOnly", "ch1Label", "levelCh1Tile",
-            //"switchCh2ReadOnly", "ch2Label", "levelCh2Tile",
-            //"switchCh3ReadOnly", "ch3Label", "levelCh3Tile",
-            //"switchCh4ReadOnly", "ch4Label", "levelCh4Tile",
+            "switchCh1ReadOnly", "ch1Label", "levelCh1Tile",
+            "switchCh2ReadOnly", "ch2Label", "levelCh2Tile",
+            "switchCh3ReadOnly", "ch3Label", "levelCh3Tile",
+            "switchCh4ReadOnly", "ch4Label", "levelCh4Tile",
 
             // Energy and Power:
-            "powerLabel", "power", "refresh", "lastReset", "energy",
+            //"powerLabel", "power", "refresh", "lastReset", "energy",
 
             // Built-in Program Shortcuts (these only work if the channels are RGBW):
-            "fireplace", "storm", "deepFade","liteFade", "police",
+            //"fireplace", "storm", "deepFade","liteFade", "police",
 
             // Color Shortcut Tiles (these only work if channels are mapped to red/green/blue/white):
-            "red","green","blue",
-            "orange","yellow","cyan",
-            "magenta","pink","purple",
+            //"red","green","blue",
+            //"orange","yellow","cyan",
+            //"magenta","pink","purple",
 
             // The Test Tile:
             //"test"
